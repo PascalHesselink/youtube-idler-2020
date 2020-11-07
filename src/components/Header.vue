@@ -4,12 +4,12 @@
              :style="{ backgroundImage: 'url(' + require('@/assets/header.png') + ')' }"
         />
         <div class="flex flex-col items-start relative">
-            <p class="mb-1 leading-none font-semibold">21.2
+            <p class="mb-1 leading-none font-semibold">2332213å
                 <span class="text-base -ml-1">
                     K
                 </span>
             </p>
-            <p class="text-lg">Subscribers</p>
+            <p class="text-lg">Lorem Ipsum</p>
         </div>
         <div class="flex flex-col items-end relative">
             <p class="mb-1 leading-none font-semibold">$1.5
@@ -17,21 +17,23 @@
                     M
                 </span>
             </p>
-            <p class="text-lg">Balance</p>
+            <p class="text-lg">Lorem Ipsum</p>
         </div>
     </div>
 </template>
 
 <script lang="ts">
+import abbreviateNumber from "../functions/abbreviateNumber";
+
 import {Vue} from 'vue-class-component';
 
-// @Options({
-//     props: {
-//         msg: String
-//     }
-// })
+export default class Header extends Vue {
+    setup() {
+        return { abbreviateNumber };
+    }
 
-export default class HelloWorld extends Vue {
-    // msg!: string
+    mounted() {
+        console.log(abbreviateNumber(234423243));
+    }
 }
 </script>

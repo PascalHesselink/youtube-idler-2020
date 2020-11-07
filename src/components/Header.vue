@@ -4,7 +4,7 @@
              :style="{ backgroundImage: 'url(' + require('@/assets/header.png') + ')' }"
         />
         <div class="flex flex-col items-start relative">
-            <p class="mb-1 leading-none font-semibold">2332213å
+            <p class="mb-1 leading-none font-semibold">@{{ abbreviateNumber(234423243) }}
                 <span class="text-base -ml-1">
                     K
                 </span>

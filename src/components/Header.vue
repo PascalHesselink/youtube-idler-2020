@@ -4,17 +4,17 @@
              :style="{ backgroundImage: 'url(' + require('@/assets/header.png') + ')' }"
         />
         <div class="flex flex-col items-start relative">
-            <p class="mb-1 leading-none font-semibold">{{ abbreviateNumber(totalSubscribers, 'amount') }}
+            <p class="mb-1 leading-none font-semibold">{{ abbreviateNumber(global.state.totalSubscribers, 'amount') }}
                 <span class="text-base -ml-1">
-                    {{ abbreviateNumber(totalSubscribers, 'abbreviate') }}
+                    {{ abbreviateNumber(global.state.totalSubscribers, 'abbreviate') }}
                 </span>
             </p>
             <p class="text-lg">Total Subscribers</p>
         </div>
         <div class="flex flex-col items-end relative">
-            <p class="mb-1 leading-none font-semibold">{{ abbreviateNumber(totalBalance, 'amount') }}
+            <p class="mb-1 leading-none font-semibold">${{ abbreviateNumber(global.state.totalBalance, 'amount') }}
                 <span class="text-base -ml-1">
-                    {{ abbreviateNumber(totalBalance, 'abbreviate') }}
+                    {{ abbreviateNumber(global.state.totalBalance, 'abbreviate') }}
                 </span>
             </p>
             <p class="text-lg">Balance</p>
@@ -22,22 +22,19 @@
     </div>
 </template>
 
-<script lang="ts">
+<script>
 import {defineComponent} from 'vue';
 import abbreviateNumber from "../functions/abbreviateNumber";
-import user from "../stores/user";
+import global from "@/global";
 
 export default defineComponent({
     name: 'Header',
     setup() {
-        const {totalSubscribers, totalBalance} = user();
-
         return {
-            totalSubscribers,
-            totalBalance,
             abbreviateNumber
         }
-    }
+    },
+    inject : ["global"]
 });
 </script>
 

@@ -1,4 +1,4 @@
-# youtube-idler-2020
+# youtube-idler-2020-v2
 
 ## Project setup
 ```

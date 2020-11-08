@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col h-screen overflow-x-hidden overflow-y-scroll">
+    <div class="flex-1 flex flex-col overflow-x-hidden overflow-y-scroll">
         <Header/>
         <router-view/>
     </div>

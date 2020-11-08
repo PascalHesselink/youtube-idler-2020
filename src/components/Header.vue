@@ -4,36 +4,41 @@
              :style="{ backgroundImage: 'url(' + require('@/assets/header.png') + ')' }"
         />
         <div class="flex flex-col items-start relative">
-            <p class="mb-1 leading-none font-semibold">{{ abbreviateNumber(234423243) }}
+            <p class="mb-1 leading-none font-semibold">{{ abbreviateNumber(totalSubscribers, 'amount') }}
                 <span class="text-base -ml-1">
-                    K
+                    {{ abbreviateNumber(totalSubscribers, 'abbreviate') }}
                 </span>
             </p>
-            <p class="text-lg">Lorem Ipsum</p>
+            <p class="text-lg">Total Subscribers</p>
         </div>
         <div class="flex flex-col items-end relative">
-            <p class="mb-1 leading-none font-semibold">$1.5
+            <p class="mb-1 leading-none font-semibold">{{ abbreviateNumber(totalBalance, 'amount') }}
                 <span class="text-base -ml-1">
-                    M
+                    {{ abbreviateNumber(totalBalance, 'abbreviate') }}
                 </span>
             </p>
-            <p class="text-lg">Lorem Ipsum</p>
+            <p class="text-lg">Balance</p>
         </div>
     </div>
 </template>
 
 <script lang="ts">
-import abbreviateNumber from "../functions/abbreviateNumber";
+import {defineComponent, ref} from 'vue';
+import abbreviateNumber from "@/functions/abbreviateNumber";
 
-import {Vue} from 'vue-class-component';
-
-export default class Header extends Vue {
+export default defineComponent({
+    name: 'Header',
     setup() {
-        return { abbreviateNumber };
-    }
+        const totalSubscribers = ref(423423);
+        const totalBalance = ref(34324234);
 
-    mounted() {
-        console.log(abbreviateNumber(234423243));
+        return {
+            totalSubscribers,
+            totalBalance,
+            abbreviateNumber
+        }
     }
-}
+});
 </script>
+
+

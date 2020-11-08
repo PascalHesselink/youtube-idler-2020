@@ -1,4 +1,4 @@
-export default function abbreviateNumber(number: number) {
+export default function abbreviateNumber(number: number, toReturn: string) {
     const SI_POSTFIXES = ["", "k", "M", "G", "T", "P", "E"];
     const tier = Math.log10(Math.abs(number)) / 3 | 0;
     if (tier == 0) return number;
@@ -9,5 +9,12 @@ export default function abbreviateNumber(number: number) {
     if (/\.0$/.test(formatted))
         formatted = formatted.substr(0, formatted.length - 2);
 
-    return formatted + postfix;
+    switch (toReturn) {
+        case 'amount':
+            return formatted;
+        case 'abbreviate':
+            return postfix;
+        default:
+            return formatted + postfix;
+    }
 }

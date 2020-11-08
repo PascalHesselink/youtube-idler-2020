@@ -16,6 +16,8 @@ window.addEventListener('resize', () => {
 });
 
 function preventZoom(e) {
+    if (!e?.currentTarget?.dataset?.lastTouch) return;
+
     var t2                            = e.timeStamp;
     var t1                            = e.currentTarget.dataset.lastTouch || t2;
     var dt                            = t2 - t1;
@@ -28,6 +30,6 @@ function preventZoom(e) {
     e.target.click();
 }
 
-myButton.addEventListener('touchstart', preventZoom);
+window.addEventListener('touchstart', preventZoom);
 
 createApp(App).use(router).mount('#app')

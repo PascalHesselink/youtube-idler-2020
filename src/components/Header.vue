@@ -23,14 +23,14 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref} from 'vue';
+import {defineComponent} from 'vue';
 import abbreviateNumber from "@/functions/abbreviateNumber";
+import user from "@/stores/user";
 
 export default defineComponent({
     name: 'Header',
     setup() {
-        const totalSubscribers = ref(423423);
-        const totalBalance = ref(34324234);
+        const {totalSubscribers, totalBalance} = user();
 
         return {
             totalSubscribers,

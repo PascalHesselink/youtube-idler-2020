@@ -1,5 +1,8 @@
 <template>
-    <div class="flex flex-col h-screen overflow-y-auto">
+    <div class="flex flex-col h-screen overflow-y-auto"
+         id="main-app"
+    >
+        Output: {{ totalSubscribers }}
         <Header/>
         <div class="bg-white rounded-t-3xl -mt-4 h-4 -mb-1 relative"/>
         <main class="px-5 pt-3 flex flex-col flex-1 relative"
@@ -66,16 +69,23 @@
 </template>
 
 <script lang="ts">
-import {Options, Vue} from 'vue-class-component';
-import Header from './components/Header.vue';
+import Header from "@/components/Header.vue";
+import user from "@/stores/user";
 
-@Options({
-    components: {
-        Header,
+export default {
+    setup() {
+        const {totalSubscribers, totalBalance} = user();
+
+        return {
+            totalSubscribers,
+            totalBalance,
+        }
     },
-})
-
-export default class App extends Vue {
-    //
-}
+    components: {
+        Header
+    },
+    mounted() {
+        console.log('test');
+    }
+};
 </script>

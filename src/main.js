@@ -11,13 +11,23 @@ window.addEventListener('load', (event) => {
 });
 
 window.addEventListener('resize', () => {
-    // We execute the same script as before
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 });
 
-document.addEventListener("touchstart", function () {
-    //
-}, false);
+function preventZoom(e) {
+    var t2                            = e.timeStamp;
+    var t1                            = e.currentTarget.dataset.lastTouch || t2;
+    var dt                            = t2 - t1;
+    var fingers                       = e.touches.length;
+    e.currentTarget.dataset.lastTouch = t2;
+
+    if (!dt || dt > 500 || fingers > 1) return; // not double-tap
+
+    e.preventDefault();
+    e.target.click();
+}
+
+myButton.addEventListener('touchstart', preventZoom);
 
 createApp(App).use(router).mount('#app')

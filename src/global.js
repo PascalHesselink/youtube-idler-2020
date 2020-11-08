@@ -1,31 +1,33 @@
 import {computed, reactive, readonly} from "vue";
 
+let progressData = localStorage.getItem('progress-data') ? JSON.parse(localStorage.getItem('progress-data')) : null;
+
 const state = reactive({
-    totalSubscribers : 5,
-    totalBalance     : 500,
+    totalSubscribers : progressData?.totalSubscribers || 0,
+    totalBalance     : progressData?.totalBalance || 0,
     stats            : {
-        subsPerClick        : 1,
-        subsPerSecond       : 0,
-        moneyPerSecondRatio : 0.02,
+        subsPerClick        : progressData?.stats?.subsPerClick || 1,
+        subsPerSecond       : progressData?.stats?.subsPerSecond || 0,
+        moneyPerSecondRatio : progressData?.stats?.moneyPerSecondRatio || 0.02,
         moneyPerSecond      : computed(() => {
             return parseFloat(state.totalSubscribers * state.stats.moneyPerSecondRatio);
         })
     },
     market           : {
         subsPerClick          : {
-            currentLevel            : 0,
+            currentLevel            : progressData?.market?.subsPerClick?.currentLevel || 0,
             startingPrice           : 25,
             increaseMultiplierPrice : 1.25,
             prefix                  : "%value% subscribers per click"
         },
         subsPerSecond         : {
-            currentLevel            : 0,
+            currentLevel            : progressData?.market?.subsPerSecond?.currentLevel || 0,
             startingPrice           : 50,
             increaseMultiplierPrice : 1.45,
             prefix                  : "%value% subscribers per second"
         },
         moneyIncomePercentage : {
-            currentLevel            : 0,
+            currentLevel            : progressData?.market?.moneyIncomePercentage?.currentLevel || 0,
             startingPrice           : 25000,
             increaseMultiplierPrice : 6,
             prefix                  : "Increase income by 0.5%"

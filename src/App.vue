@@ -25,6 +25,8 @@ export default {
         this.gameInterval = setInterval(() => {
             global.updateTotalBalance(global.state.totalBalance + global.state.stats.moneyPerSecond);
             global.updateTotalSubscribers(global.state.totalSubscribers + global.state.stats.subsPerSecond);
+
+            localStorage.setItem('progress-data', JSON.stringify(global.state));
         }, 1000);
     },
     beforeUnmount() {

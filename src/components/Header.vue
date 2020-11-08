@@ -28,7 +28,6 @@ import abbreviateNumber from "../functions/abbreviateNumber";
 import global from "@/global";
 
 export default defineComponent({
-    name: 'Header',
     setup() {
         return {
             abbreviateNumber

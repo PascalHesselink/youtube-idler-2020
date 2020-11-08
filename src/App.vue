@@ -2,11 +2,13 @@
     <div class="flex-1 flex flex-col overflow-x-hidden overflow-y-scroll">
         <Header/>
         <router-view/>
+        <Navigation/>
     </div>
 </template>
 
 <script>
 import Header from './components/Header';
+import Navigation from './components/Navigation';
 import global from "./global";
 
 export default {
@@ -16,7 +18,8 @@ export default {
         }
     },
     components : {
-        Header
+        Header,
+        Navigation
     },
     provide    : {
         global
